@@ -1,0 +1,28 @@
+﻿@page
+@model ListBoxModel
+@{
+    ViewData["Title"] = "List Box";
+    var method = Request.Method.ToUpper();
+}
+@if (method == "GET")
+{
+    <form method="post" class="border border-light p-3">
+        <h3>Which country did you visit?</h3>
+        <div>
+            <select class="browser-default custom-select" name="countries" multiple>
+                @foreach (var p in Model.Countries)
+                {
+                    <option value="@p.value">@p.display</option>
+                }
+            </select>
+        </div>
+        <button class="btn btn-success btn-block my-2" type="submit">Submit</button>
+    </form>
+}
+else if (method == "POST")
+{
+    <h3>You have been to @foreach (var c in Model.VisitedCountries)
+        {
+            <strong>@c </strong>
+        }</h3>
+}

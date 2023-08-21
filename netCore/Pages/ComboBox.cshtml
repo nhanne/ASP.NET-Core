@@ -1,0 +1,26 @@
+﻿@page
+@model ComboBoxModel
+@{
+    ViewData["Title"] = "ComboBox";
+    var method = Request.Method.ToUpper();
+}
+@if (method == "GET")
+{
+    <form method="post" class="border border-light p-5">
+        <h3>What is your country of birth?</h3>
+        <div>
+            <select class="browser-default custom-select" name="country">
+                <option value="Not specified" selected>Choose a country ...</option>
+                <option value="US">United States of America</option>
+                <option value="China">People Republic of China</option>
+                <option value="Japan">Japan</option>
+                <option value="Germany">Federal Republic of Germany</option>
+            </select>
+        </div>
+        <button class="btn btn-success btn-block my-2" type="submit">Submit</button>
+    </form>
+}
+else if (method == "POST")
+{
+    <h3>You were born in @Model.Country</h3>
+}

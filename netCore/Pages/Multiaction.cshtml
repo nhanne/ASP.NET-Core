@@ -1,0 +1,12 @@
+﻿@page "{handler?}"
+@model MultiactionModel
+@{
+    ViewData["Title"] = "Multiaction";
+}
+<form method="post">
+    <button asp-page-handler="Register">Register Now</button>
+    <button asp-page-handler="Requestinfo">Request Info</button>
+</form>
+<a class="btn btn-danger" asp-page-handler="clear">Clear All</a>
+<a class="btn btn-info" asp-page-handler="reset">Reset All</a>
+<h3>@Model.Message</h3>

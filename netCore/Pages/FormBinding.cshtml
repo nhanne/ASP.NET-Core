@@ -1,0 +1,25 @@
+﻿@page
+@model FormBindingModel
+@{
+    ViewData["Title"] = "FormBinding";
+    var method = Request.Method.ToUpper();
+}
+@if (method == "GET")
+{
+    <form class="center border border-light p-3 w-50" method="post">
+        <div class="text-center">
+            <p class="h4 mb-4">Subscribe</p>
+            <p>Join our mailing list. We write rarely, but only the best content.</p>
+        </div>
+        <input name="fullname" type="text" placeholder="Name" class="form-control mb-2">
+        <input name="email" type="email" placeholder="E-mail" class="form-control mb-2">
+        <input name="age" type="number" placeholder="Age" class="form-control mb-2">
+        <button type="submit" class="btn btn-info btn-block">Register</button>
+    </form>
+}
+else if (method == "POST")
+{
+    <div class="center text-center border border-success p-3 w-50">
+        <p class="h5">@Model.Message</p>
+    </div>
+}

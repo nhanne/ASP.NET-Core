@@ -1,0 +1,26 @@
+﻿@page
+@model RadioButtonModel
+@{
+    ViewData["Title"] = "Radio Button";
+}
+@if (Request.Method.ToUpper() == "GET")
+{
+    <h3>What is your native language?</h3>
+    <form method="post">
+        @foreach (var l in Model.OfficialLanguages)
+        {
+            <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="@l" name="language" value="@l">
+                <label class="custom-control-label" for="@l">@l</label>
+            </div>
+        }
+        <div class="form-group">
+            <button class="btn btn-success" type="submit">Submit</button>
+            <button class="btn btn-secondary" type="reset">Clear</button>
+        </div>
+    </form>
+}
+else if (Request.Method.ToUpper() == "POST")
+{
+    <h3 class="alert-success">Your native language is <b>@Model.Language</b></h3>
+}

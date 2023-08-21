@@ -1,0 +1,21 @@
+﻿@page
+@model netCore.Pages.UploadModel
+@{
+    ViewData["Title"] = "Upload";
+}
+<h1>File Upload</h1>
+<form method="post" enctype="multipart/form-data">
+    <input type="file" name="file" />
+    <input type="submit" value="Submit now" class="btn btn-info" />
+</form>
+@if (Request.Method == "POST")
+{
+    @if (Model.Success)
+    {
+        <h3 class="text-success">File '@ViewData["file"]' uploaded successfully!</h3>
+    }
+    else
+    {
+        <h2 class="text-danger">Failed to upload file '@ViewData["file"]'!</h2>
+    }
+}

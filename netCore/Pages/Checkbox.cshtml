@@ -1,0 +1,29 @@
+﻿@page
+@model CheckboxModel
+@{
+    ViewData["Title"] = "Checkbox";
+}
+@if (Request.Method.ToUpper() == "GET")
+{
+    <h3>Which languages can you speak?</h3>
+    <form method="post">
+        @foreach (var l in Model.OfficialLanguages)
+        {
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="@l" name="languages" value="@l">
+                <label class="custom-control-label" for="@l">@l</label>
+            </div>
+        }
+        <div class="form-group">
+            <button class="btn btn-success" type="submit">Submit</button>
+            <button class="btn btn-secondary" type="reset">Clear</button>
+        </div>
+    </form>
+}
+else if (Request.Method.ToUpper() == "POST")
+{
+    <h3 class="alert-success">Great! You can speak: @foreach (var l in Model.Languages)
+        {
+            <b>@l</b>
+        }</h3>
+}
